@@ -8,9 +8,19 @@
 
 //console.log(document.getElementById('header-title'));
 
-// Get element by class name
+// Get element by class name//
 
-var item=document.getElementsByClassName('list-group-item');
+// var item=document.getElementsByClassName('list-group-item');
+// console.log(item[2]);
+// item[2].style.backgroundColor = 'green';
+
+// for(var i=0; i<item.length;i++){
+//     item[i].style.fontWeight = 'bold';
+// }
+
+//GET ELEMENT BY ID//
+
+var item=document.getElementsByTagName('li');
 console.log(item[2]);
 item[2].style.backgroundColor = 'green';
 
