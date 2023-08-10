@@ -8,7 +8,7 @@
 
 //console.log(document.getElementById('header-title'));
 
-// Get element by class name//
+// Get element by class name //
 
 // var item=document.getElementsByClassName('list-group-item');
 // console.log(item[2]);
@@ -17,6 +17,7 @@
 // for(var i=0; i<item.length;i++){
 //     item[i].style.fontWeight = 'bold';
 // }
+
 
 // //GET ELEMENT BY ID//
 
@@ -43,4 +44,5 @@ for(var i=0;i<odd.length;i++){
 var even = document.querySelectorAll('li:nth-child(even)');
 for(var i=0;i<even.length;i++){
     even[0].style.color = 'green';
+
 }
