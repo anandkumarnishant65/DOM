@@ -1,92 +1,48 @@
-//console.dir(document);
-//var headerTitle=document.getElementById('header-title');
-//console.log(headerTitle);
-//headerTitle.textContent='Hello';
+var form = document.getElementById('addForm');
+var itemList = document.getElementById('items');
 
-//var header=document.getElementById('main-header');
-//header.style.borderBottom = 'solid 3px #000';
+//form submit event//
+form.addEventListener('submit', addItem);
 
-//console.log(document.getElementById('header-title'));
+//delete event//
+itemList.addEventListener('click', removeItem);
 
-// Get element by class name //
+//Add Item//
+function addItem(e){
+    e.preventDefault();
+    //get input value//
+    var newItem = document.getElementById('item').value;
 
-// var item=document.getElementsByClassName('list-group-item');
-// console.log(item[2]);
-// item[2].style.backgroundColor = 'green';
+    //creat new li element//
+    var li = document.createElement('li');
 
-// for(var i=0; i<item.length;i++){
-//     item[i].style.fontWeight = 'bold';
-// }
+    //Add Class//
+    li.className = 'list-group-item';
 
+    //Add text node with the input value//
+    li.appendChild(document.createTextNode(newItem));
 
-// //GET ELEMENT BY ID//
+    //create del button//
+    var deleteBtn = document.createElement('button');
 
-// var item=document.getElementsByTagName('li');
-// console.log(item[2]);
-// item[2].style.backgroundColor = 'green';
+    //Add classes to del button//
+    deleteBtn.className = 'btn btn-danger btn-sm float-right delete';
 
-// for(var i=0; i<item.length;i++){
-//     item[i].style.fontWeight = 'bold';
-// }
+    //Append text node//
+    deleteBtn.appendChild(document.createTextNode('X'));
 
-// QUERY SELECTOR //
-// var seconditem = document.querySelector('.list-group-item:nth-child(2)');
-// seconditem.style.backgroundColor = 'pink';
-// var thirditem = document.querySelector('.list-group-item:nth-child(3)');
-// thirditem.style.color = 'green';
+    //Append button to li//
+    li.appendChild(deleteBtn);
 
-// // QUERY SELECTORALL //
-// var odd = document.querySelectorAll('li:nth-child(odd)');
-// for(var i=0;i<odd.length;i++){
-//     odd[i].style.backgroundColor = 'green';
-//     odd[1].style.color = 'green';
-// }
-// var even = document.querySelectorAll('li:nth-child(even)');
-// for(var i=0;i<even.length;i++){
-//     even[0].style.color = 'green';
+    //Append li to list//
+    itemList.appendChild(li);
+}
 
-// }
-
-// TRAVERSING DOM //
-
-// var itemList = document.querySelector('#items');
-// console.log(itemList.parentNode);
-// //itemList.parentNode.style.backgroundColor = '#e1e1e1';
-
-// //PARENTELEMENT//
-// //itemList.parentNode.style.backgroundColor = 'red';
-
-// //CHILDNODE//
-// itemList.children[1].style.backgroundColor = 'pink';
-
-// //FIRSTELEMENTCHILD//
-// itemList.firstElementChild.style.backgroundColor = 'yellow';
-
-// //LASTCHILD
-// itemList.lastElementChild.style.backgroundColor = 'blue';
-
-// //nextSibling
-// //console.log(itemList.nextSibling);
-// //console.log(itemList.nextElementSibling);
-
-// //previousSibling//
-// itemList.previousElementSibling.style.color = 'red';
-
-//CreateElement//
-//creat a Div//
-var newDiv = document.createElement('div','/div');
-//Add class//
-newDiv.className = 'hello';
-//Add Id//
-newDiv.id='hello1';
-//add attribute//
-newDiv.setAttribute('title' , 'hello div');
-//create textNode//
-var newDivText = document.createTextNode('HEllo');
-//Add text to Div//
-newDiv.appendChild(newDivText);
-var container = document.querySelector('header .container');
-var h1 = document.querySelector('header h1');
-container.insertBefore(newDiv,h1);
-
-console.log(newDiv);
+function removeItem(e){
+    if(e.target.classList.contains('delete')){
+        if(confirm('Pakka uda du???')){
+            var li = e.target.parentElement;
+            itemList.removeChild(li);
+        }
+    }
+}
