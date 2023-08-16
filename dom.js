@@ -16,6 +16,7 @@ function addItem(e){
     e.preventDefault();
     //get input value//
     var newItem = document.getElementById('item').value;
+    var nextItem = document.getElementById('iteme').value;
 
     //creat new li element//
     var li = document.createElement('li');
@@ -25,6 +26,7 @@ function addItem(e){
 
     //Add text node with the input value//
     li.appendChild(document.createTextNode(newItem));
+    li.appendChild(document.createTextNode(nextItem));
 
     //create del button//
     var deleteBtn = document.createElement('button');
@@ -59,11 +61,15 @@ function filterItems(e){
     //convert to array
     Array.from(items).forEach(function(item){
         var itemName = item.firstChild.textContent;
-        if(itemName.toLowerCase().indexOf(text)!=-1){
+        var itemsName = item.childNodes[1].textContent;
+
+        if(itemName.toLowerCase().indexOf(text)!=-1 || itemsName.toLowerCase().indexOf(text)!=-1){
             item.style.display='block';
         }
         else{
             item.style.display='none';
         }
+        
+        
     });
 }
