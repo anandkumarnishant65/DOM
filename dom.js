@@ -1,11 +1,15 @@
 var form = document.getElementById('addForm');
 var itemList = document.getElementById('items');
+var filter = document.getElementById('filter');
 
 //form submit event//
 form.addEventListener('submit', addItem);
 
 //delete event//
 itemList.addEventListener('click', removeItem);
+
+//filter event//
+filter.addEventListener('keyup', filterItems);
 
 //Add Item//
 function addItem(e){
@@ -40,9 +44,26 @@ function addItem(e){
 
 function removeItem(e){
     if(e.target.classList.contains('delete')){
-        if(confirm('Pakka uda du???')){
+        if(confirm('Are You Sure?')){
             var li = e.target.parentElement;
             itemList.removeChild(li);
         }
     }
+}
+
+//filter Items//
+function filterItems(e){
+    var text = e.target.value.toLowerCase();
+    var items = itemList.getElementsByTagName('li');
+
+    //convert to array
+    Array.from(items).forEach(function(item){
+        var itemName = item.firstChild.textContent;
+        if(itemName.toLowerCase().indexOf(text)!=-1){
+            item.style.display='block';
+        }
+        else{
+            item.style.display='none';
+        }
+    });
 }
